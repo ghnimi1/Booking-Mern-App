@@ -8,7 +8,7 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
-import {useLocation} from 'react-router-dom'
+import { useLocation} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleHotel } from "../../redux/actions/hotelActions";
 import { SearchContext } from "../../context/SearchContext";
@@ -51,7 +51,12 @@ const {hotel,loading}=useSelector(state=>state.hotel)
   };
 
   const handleClick = () => { 
+    if(token){
       setOpenModal(true);
+    }else{
+      alert('SignIn Please !!')
+    }
+      
   };
 
 useEffect(()=>{
@@ -136,7 +141,7 @@ dispatch(fetchSingleHotel(id))
           </div>
         </div>
       </div>
-      {token && openModal && <Reserve setOpen={setOpenModal} id={id}/>}
+      {token && openModal && <Reserve setOpen={setOpenModal} id={id}/> }
     </div>
   );
 };

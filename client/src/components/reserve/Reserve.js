@@ -48,7 +48,7 @@ const Reserve = ({ setOpen, id }) => {
     };
 
     const RoomSele = hotelRooms?.find(item => item?.roomNumbers?.find(r => r._id === selectedRooms[0]))
-    const roomNum = RoomSele?.roomNumbers?.filter(s => s._id === selectedRooms[0])
+    const roomNum = RoomSele?.roomNumbers?.filter(s => selectedRooms.includes(s._id))
 
     const handleSelect = (e) => {
         const checked = e.target.checked;
